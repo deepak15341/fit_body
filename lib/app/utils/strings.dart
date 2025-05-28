@@ -11,7 +11,6 @@ class Strings {
     "Find nutrition tips that fit your lifestyle",
     "A community for you, challenge yourself",
   ];
-  static final empty = "";
   static final login = "Login";
   static final username = "Username or email";
   static final password = "Password";
@@ -60,5 +59,4 @@ class Strings {
   static final and = " and ";
   static final alreadyHaveAccount = "Already have an account? ";
   static final checkMandatory = "Please Fill Mandatory Fields !!";
-
 }

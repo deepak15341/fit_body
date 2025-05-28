@@ -30,61 +30,65 @@ class OnBoardingScreensView extends GetView<OnBoardingScreensController> {
               ),
             ),
             child: SafeArea(
-              child: ListView(
+              child: Stack(
                 children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: TextButton(
-                        onPressed: () {
-                          controller.onTapSkip();
-                        },
-                        child: Text(
-                          (index == 1 || index == 2)
-                              ? Strings.skip
-                              : Strings.empty,
-                          style: TextWidgets.textStyle(
-                            fontColor: AppColors.yellow,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 22,
+                  ListView(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        margin: EdgeInsets.only(
+                          left: 14,
+                          right: 14,
+                          top: index == 0 ? height * 0.28 : height * 0.32,
+                        ),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          color: index == 0 ? null : AppColors.purple,
+                        ),
+                        child:
+                            index == 0
+                                ? fragment1(context, height)
+                                : fragment2(context, index, height, width),
+                      ),
+                      SizedBox(height: height * 0.02),
+                      if (index != 0)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 100.0,
+                          ),
+                          child: CustomButton(
+                            text:
+                                index == 1 || index == 2
+                                    ? Strings.next
+                                    : Strings.getStarted,
+                            buttonTextSize: 16,
+                            fw: FontWeight.w700,
+                            onTap: () {
+                              controller.onNextTap();
+                            },
                           ),
                         ),
-                      ),
-                    ),
+                    ],
                   ),
-
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    margin: EdgeInsets.only(
-                      left: 14,
-                      right: 14,
-                      top: index == 0 ? height * 0.28 : height * 0.32,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: index == 0 ? null : AppColors.purple,
-                    ),
-                    child:
-                        index == 0
-                            ? fragment1(context, height)
-                            : fragment2(context, index, height, width),
-                  ),
-                  SizedBox(height: height * 0.02),
-                  if (index != 0)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                      child: CustomButton(
-                        text:
-                            index == 1 || index == 2
-                                ? Strings.next
-                                : Strings.getStarted,
-                        buttonTextSize: 16,
-                        fw: FontWeight.w700,
-                        onTap: () {
-                          controller.onNextTap();
-                        },
+                  if (index > 0 && index < controller.bgImage.length - 1)
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: TextButton(
+                          onPressed: () {
+                            controller.onTapSkip();
+                          },
+                          child: Text(
+                            Strings.skip,
+                            style: TextWidgets.textStyle(
+                              fontColor: AppColors.yellow,
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 22,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                 ],
@@ -118,7 +122,8 @@ class OnBoardingScreensView extends GetView<OnBoardingScreensController> {
             scale: 2.8,
           ),
         ),
-        RichText(textAlign: TextAlign.center,
+        RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
             children: [
               TextSpan(
