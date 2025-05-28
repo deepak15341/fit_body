@@ -42,5 +42,23 @@ class Strings {
   static final cont = "Continue";
   static final resetPassword = "Reset Password";
   static final setNewPassword = "Set New Password";
-  static final passwordDescription = "You're almost there! Enter a new password to complete the reset. Choose something secure and memorable.";
+  static final List<String> passwordDescription = [
+    "You're almost there! Enter a new password to complete the reset. Choose something secure and memorable.",
+    "Create a new password that’s strong and unique to keep your account safe.",
+    "Your security matters. Enter a new, secure password to continue.",
+    "Please set a new password. Use a mix of letters, numbers, and symbols for better protection.",
+  ];
+  static final createAccount = "Create Account";
+  static final letsStart = "Let's Start!";
+  static final emailOrMobile = "Email or Mobile Number";
+  static final fullName = "Full Name";
+  static final signUpPassword = "Password";
+  static final signUpConfirmPassword = "Confirm Password";
+  static final termsConditionText = "By continuing, you agree to ";
+  static final termsOfUse = "Terms of Use";
+  static final privacyPolicy = "Privacy Policy";
+  static final and = " and ";
+  static final alreadyHaveAccount = "Already have an account? ";
+  static final checkMandatory = "Please Fill Mandatory Fields !!";
+
 }

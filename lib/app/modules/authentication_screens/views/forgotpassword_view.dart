@@ -9,9 +9,9 @@ import '../../../utils/color_constants.dart';
 import '../../../utils/widgets/custom_button.dart';
 import '../../../utils/widgets/text_widgets.dart';
 
-class ForgotPasswordView extends StatelessWidget {
-  ForgotPasswordView({super.key});
-  final controller = Get.find<AuthenticationScreensController>();
+class ForgotPasswordView extends GetView<AuthenticationScreensController> {
+  const ForgotPasswordView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -34,7 +34,7 @@ class ForgotPasswordView extends StatelessWidget {
               ),
               SizedBox(height: height * 0.04),
               Text(
-                controller.getPasswordDescription(),
+                controller.passwordDescription,
                 textAlign: TextAlign.center,
                 style: TextWidgets.textStyle(
                   fontSize: 14,
@@ -88,9 +88,9 @@ class ForgotPasswordView extends StatelessWidget {
 
 
 
-class SetNewPasswordView extends StatelessWidget {
-  SetNewPasswordView({super.key});
-  final controller = Get.find<AuthenticationScreensController>();
+class SetNewPasswordView extends GetView<AuthenticationScreensController>  {
+  const SetNewPasswordView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -104,7 +104,7 @@ class SetNewPasswordView extends StatelessWidget {
             children: [
               SizedBox(height: height * 0.1),
               Text(
-                Strings.passwordDescription,
+                controller.setupNewPasswordDescription,
                 textAlign: TextAlign.center,
                 style: TextWidgets.textStyle(
                   fontSize: 14,
@@ -153,7 +153,7 @@ class SetNewPasswordView extends StatelessWidget {
               ),
               SizedBox(height: height * 0.05),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.25),
+                padding: EdgeInsets.symmetric(horizontal: width * 0.175),
                 child: CustomButton(
                   text: Strings.resetPassword,
                   height: height * 0.05,

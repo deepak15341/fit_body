@@ -2,6 +2,7 @@ import 'package:fitbody/app/utils/color_constants.dart';
 import 'package:fitbody/app/utils/widgets/app_text_field.dart';
 import 'package:fitbody/app/utils/widgets/custom_app_bar.dart';
 import 'package:fitbody/app/utils/widgets/text_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/strings.dart';
@@ -33,7 +34,7 @@ class LoginView
               ),
               SizedBox(height: height * 0.02),
               Text(
-                controller.getDescription(),
+                controller.loginDescription,
                 textAlign: TextAlign.center,
                 style: TextWidgets.textStyle(
                   fontSize: 14,
@@ -92,7 +93,9 @@ class LoginView
                         fontSize: 14,
                       ),
                     ),
-                    TextSpan(
+                    TextSpan(recognizer: TapGestureRecognizer()..onTap = (){
+                      controller.onSignUpNavigationTapped();
+                    },
                       text: Strings.signUp,
                       style: TextWidgets.textStyle(
                         fontWeight: FontWeight.w300,

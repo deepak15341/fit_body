@@ -8,6 +8,7 @@ abstract class Routes {
   static const loginScreen = _Paths.loginScreen;
   static const forgotPasswordScreen = _Paths.forgotPasswordScreen;
   static const setNewPasswordScreen = _Paths.setNewPasswordScreen;
+  static const signUpScreen = _Paths.signUpScreen;
 }
 
 abstract class _Paths {
@@ -17,4 +18,5 @@ abstract class _Paths {
   static const loginScreen = '/login-screen';
   static const forgotPasswordScreen = '/forgot-password-screen';
   static const setNewPasswordScreen = '/set-new-password-screen';
+  static const signUpScreen = '/signUp-screen';
 }

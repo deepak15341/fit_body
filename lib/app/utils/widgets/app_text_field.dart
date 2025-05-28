@@ -168,7 +168,7 @@ class AppTextField extends StatelessWidget {
               errorStyle: TextWidgets.textStyle(
                 fontWeight: FontWeight.w300,
                 fontSize: 12,
-                fontColor: AppColors.red
+                fontColor: AppColors.red,
               ),
               contentPadding:
                   addPadding
@@ -190,7 +190,11 @@ class AppTextField extends StatelessWidget {
             ),
             onFieldSubmitted: onFieldSubmitted,
             textCapitalization: textCapitalization,
-            onChanged: onChanged,
+            onChanged:
+                onChanged ??
+                (value) {
+                  controller.text = value.trim();
+                },
           ),
         ),
       ],

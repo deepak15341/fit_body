@@ -1,4 +1,5 @@
 import 'package:fitbody/app/modules/authentication_screens/views/forgotpassword_view.dart';
+import 'package:fitbody/app/modules/authentication_screens/views/signup_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/authentication_screens/bindings/authentication_screens_binding.dart';
@@ -36,6 +37,10 @@ class AppPages {
     GetPage(
       name: _Paths.setNewPasswordScreen,
       page: () => SetNewPasswordView(),
+    ),
+    GetPage(
+      name: _Paths.signUpScreen,
+      page: () => SignUpScreenView(),
     ),
   ];
 }
