@@ -1,5 +1,5 @@
 import 'package:fitbody/app/utils/strings.dart';
-import 'package:fitbody/app/utils/widgets/toast.dart';
+import 'package:fitbody/app/utils/widgets/snack_bar/snackMessage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'dart:math';
