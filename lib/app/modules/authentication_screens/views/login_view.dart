@@ -52,7 +52,7 @@ class LoginView
                   borderRadius: BorderRadius.circular(18),
                   color: AppColors.purple,
                 ),
-                child: fragment2(context, height, width),
+                child: fragment(context, height, width),
               ),
               SizedBox(height: height * 0.05),
               Padding(
@@ -79,7 +79,7 @@ class LoginView
               SizedBox(height: height * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: iconList(),
+                children: iconList(context),
               ),
               SizedBox(height: height * 0.06),
               RichText(
@@ -114,25 +114,31 @@ class LoginView
     );
   }
 
-  iconList() {
+  iconList(BuildContext context) {
     return List.generate(3, (index) {
-      return Container(
-        padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: AppColors.white,
-        ),
-        child: ImageIcon(
-          AssetImage(controller.loginMethodIcon[index]),
-          color: AppColors.violet,
-          size: 32,
+      return InkWell(onTap: () {
+        if(index==2){
+          controller.fingerPrintTap();
+        }
+      },splashColor: AppColors.transparent,highlightColor: AppColors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: AppColors.white,
+          ),
+          child: ImageIcon(
+            AssetImage(controller.loginMethodIcon[index]),
+            color: AppColors.violet,
+            size: 32,
+          ),
         ),
       );
     }).toList();
   }
 
-  Widget fragment2(BuildContext context, height, width) {
+  Widget fragment(BuildContext context, height, width) {
     return Form(
       key: controller.loginValidateKey,
       child: Wrap(

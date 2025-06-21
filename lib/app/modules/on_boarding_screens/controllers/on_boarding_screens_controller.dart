@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:fitbody/app/routes/app_pages.dart';
+import 'package:fitbody/app/utils/image_paths.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -11,35 +12,26 @@ class OnBoardingScreensController extends GetxController {
     startAutoSlide();
   }
 
-
   @override
   void onClose() {
-    timer?.cancel();
+    timer.value?.cancel();
     pageController.dispose();
     super.onClose();
   }
 
-  int index = 0;
-  final PageController pageController = PageController();
-  Timer? timer;
-  List bgImage = [
-    "assets/images/on_board1.png",
-    "assets/images/on_board2.png",
-    "assets/images/on_board3.png",
-    "assets/images/on_board4.png",
-  ];
-  List onBoardIcon = [
-    "assets/images/on_board_icon1.png",
-    "assets/images/on_board_icon2.png",
-    "assets/images/on_board_icon3.png",
-  ];
+  Rx<int> index = 0.obs;
+  PageController pageController = PageController();
+  Rx<Timer?> timer = Rxn();
+
+  List bgImage = [IP.onBoard1, IP.onBoard2, IP.onBoard3, IP.onBoard4];
+  List onBoardIcon = [IP.onBoardIcon1, IP.onBoardIcon2, IP.onBoardIcon3];
 
   void startAutoSlide() {
-    timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (index < bgImage.length - 1) {
-        index++;
+    timer.value = Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (index.value < bgImage.length - 1) {
+        index.value++;
         pageController.animateToPage(
-          index,
+          index.value,
           duration: const Duration(milliseconds: 1000),
           curve: Curves.easeInOut,
         );
@@ -50,7 +42,7 @@ class OnBoardingScreensController extends GetxController {
   }
 
   void onNextTap() {
-    if (index == bgImage.length - 1) {
+    if (index.value == bgImage.length - 1) {
       Get.offAllNamed(Routes.loginScreen);
     } else {
       pageController.nextPage(
@@ -61,14 +53,12 @@ class OnBoardingScreensController extends GetxController {
   }
 
   void onTapSkip() {
-    if (index == 1 || index == 2) {
-      Get.offAllNamed(Routes.loginScreen);
-    }
+    Get.offAllNamed(Routes.loginScreen);
   }
 
   void onPageChanged(int index) {
-    this.index = index;
-    timer?.cancel();
+    this.index.value = index;
+    timer.value?.cancel();
     startAutoSlide();
   }
 }

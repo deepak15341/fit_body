@@ -1,3 +1,4 @@
+import 'package:fitbody/app/utils/image_paths.dart';
 import 'package:fitbody/app/utils/widgets/text_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,7 +35,7 @@ class _LaunchScreenViewState extends State<LaunchScreenView> {
           children: [
             Center(
               child: Image.asset(
-                'assets/images/app_logo.png',
+                IP.appLogo,
                 filterQuality: FilterQuality.high,
                 scale: 5.5,
               ),

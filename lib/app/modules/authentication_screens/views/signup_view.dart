@@ -111,7 +111,8 @@ class SignUpScreenView extends GetView<AuthenticationScreensController> {
                         fontWeight: FontWeight.w300,
                         fontSize: 14,
                       ),
-                    ),  TextSpan(
+                    ),
+                    TextSpan(
                       text: Strings.termsOfUse,
                       style: TextWidgets.textStyle(
                         fontWeight: FontWeight.w300,
@@ -119,7 +120,8 @@ class SignUpScreenView extends GetView<AuthenticationScreensController> {
                         fontColor: AppColors.yellow,
                         textDecoration: TextDecoration.underline,
                       ),
-                    ), TextSpan(
+                    ),
+                    TextSpan(
                       text: Strings.and,
                       style: TextWidgets.textStyle(
                         fontWeight: FontWeight.w300,
@@ -163,7 +165,7 @@ class SignUpScreenView extends GetView<AuthenticationScreensController> {
               SizedBox(height: height * 0.02),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: iconList(),
+                children: iconList(context),
               ),
               SizedBox(height: height * 0.04),
               RichText(
@@ -177,9 +179,12 @@ class SignUpScreenView extends GetView<AuthenticationScreensController> {
                         fontSize: 14,
                       ),
                     ),
-                    TextSpan(recognizer: TapGestureRecognizer()..onTap = (){
-                      controller.onLoginNavigationTap();
-                    },
+                    TextSpan(
+                      recognizer:
+                          TapGestureRecognizer()
+                            ..onTap = () {
+                              controller.onLoginNavigationTap();
+                            },
                       text: Strings.login,
                       style: TextWidgets.textStyle(
                         fontWeight: FontWeight.w300,
@@ -198,19 +203,28 @@ class SignUpScreenView extends GetView<AuthenticationScreensController> {
     );
   }
 
-  iconList() {
+  iconList(BuildContext context) {
     return List.generate(3, (index) {
-      return Container(
-        padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: AppColors.white,
-        ),
-        child: ImageIcon(
-          AssetImage(controller.loginMethodIcon[index]),
-          color: AppColors.violet,
-          size: 32,
+      return InkWell(
+        onTap: () {
+          if (index == 2) {
+            controller.fingerPrintTap();
+          }
+        },
+        splashColor: AppColors.transparent,
+        highlightColor: AppColors.transparent,
+        child: Container(
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: AppColors.white,
+          ),
+          child: ImageIcon(
+            AssetImage(controller.loginMethodIcon[index]),
+            color: AppColors.violet,
+            size: 32,
+          ),
         ),
       );
     }).toList();

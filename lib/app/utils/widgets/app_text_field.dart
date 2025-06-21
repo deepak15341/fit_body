@@ -35,7 +35,7 @@ class AppTextField extends StatelessWidget {
     this.readOnly = false,
     this.showTitle = true,
     this.inputFormatters,
-    this.onChanged,
+    // this.onChanged,
     this.onFieldSubmitted,
     this.textCapitalization = TextCapitalization.none,
     this.borderRadius = 0.0,
@@ -65,7 +65,7 @@ class AppTextField extends StatelessWidget {
   final bool isDense;
   final bool readOnly;
   final bool showTitle;
-  final ValueChanged<String>? onChanged;
+  // final ValueChanged<String>? onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final ValueChanged<String>? onFieldSubmitted;
   final TextCapitalization textCapitalization;
@@ -190,11 +190,8 @@ class AppTextField extends StatelessWidget {
             ),
             onFieldSubmitted: onFieldSubmitted,
             textCapitalization: textCapitalization,
-            onChanged:
-                onChanged ??
-                (value) {
-                  controller.text = value.trim();
-                },
+            // onChanged:
+            //     onChanged
           ),
         ),
       ],
@@ -295,7 +292,7 @@ getEmptyValidation(String? value) {
   debugPrint(value);
   if (value == null) {
     return '* Required';
-  } else if (value.isEmpty) {
+  } else if (value.trim().isEmpty) {
     return '* Required';
   } else {
     return null;

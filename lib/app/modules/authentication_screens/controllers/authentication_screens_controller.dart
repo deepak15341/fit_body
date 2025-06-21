@@ -1,8 +1,10 @@
+import 'package:fitbody/app/utils/image_paths.dart';
 import 'package:fitbody/app/utils/strings.dart';
-import 'package:fitbody/app/utils/widgets/snack_bar/snackMessage.dart';
+import 'package:fitbody/app/utils/widgets/snack_bar/snack_message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'dart:math';
+import '../../../helper/biometric_helper.dart';
 import '../../../routes/app_pages.dart';
 
 class AuthenticationScreensController extends GetxController {
@@ -24,18 +26,20 @@ class AuthenticationScreensController extends GetxController {
   TextEditingController signUpPasswordController = TextEditingController();
   TextEditingController signUpConfirmPasswordController =
       TextEditingController();
+  String loginDescription = Strings.empty;
+  String passwordDescription = Strings.empty;
   GlobalKey<FormState> loginValidateKey = GlobalKey();
   GlobalKey<FormState> forgotPasswordValidateKey = GlobalKey();
   GlobalKey<FormState> setNewPasswordValidateKey = GlobalKey();
   GlobalKey<FormState> signUpValidateKey = GlobalKey();
+
   List loginMethodIcon = [
-    "assets/images/google_icon.png",
-    "assets/images/facebook_icon.png",
-    "assets/images/fingerprint_icon.png",
+    IP.google,
+    IP.facebook,
+    IP.fingerprint,
   ];
 
-  String loginDescription = "";
-  String passwordDescription = "";
+
 
   String getLoginDescription() {
     final random = Random();
@@ -55,7 +59,7 @@ class AuthenticationScreensController extends GetxController {
     if (loginValidateKey.currentState!.validate()) {
       showSnack(
         context: context,
-        messageType: MessageType.success("Login Successful"),
+        messageType: MessageType.success(Strings.loginSuccess),
       );
     } else {
       showSnack(
@@ -92,7 +96,7 @@ class AuthenticationScreensController extends GetxController {
     }
   }
 
-  String setupNewPasswordDescription = "";
+  String setupNewPasswordDescription = Strings.empty;
 
   String getSetupNewPasswordDescription() {
     final random = Random();
@@ -111,15 +115,33 @@ class AuthenticationScreensController extends GetxController {
 
   void onSignUpTapped({required BuildContext context}) {
     if (signUpValidateKey.currentState!.validate()) {
-      showSnack(
-        context: context,
-        messageType: MessageType.success("Account Created"),
-      );
+      Get.toNamed(Routes.setupScreen);
     } else {
       showSnack(
         context: context,
         messageType: MessageType.info(Strings.checkMandatory),
       );
     }
+  }
+
+
+  void fingerPrintTap()async{
+    final biometricHelper = BiometricHelper();
+      bool success = await biometricHelper.authenticateWithBiometrics();
+      if (success) {
+        debugPrint("Biometric Auth Success");
+      } else {
+        debugPrint("Biometric Auth Failed");
+      }
+
+    // Get.toNamed(Routes.fingerPrintScreen);
+  }
+
+  void onSkipTap(){
+    Get.back();
+  }
+
+  void onFingerPrintContinueTap(){
+    Get.back();
   }
 }

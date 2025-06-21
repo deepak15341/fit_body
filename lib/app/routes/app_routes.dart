@@ -9,14 +9,18 @@ abstract class Routes {
   static const forgotPasswordScreen = _Paths.forgotPasswordScreen;
   static const setNewPasswordScreen = _Paths.setNewPasswordScreen;
   static const signUpScreen = _Paths.signUpScreen;
+  static const fingerPrintScreen = _Paths.fingerPrintScreen;
+  static const setupScreen = _Paths.setupScreen;
 }
 
 abstract class _Paths {
   _Paths._();
-  static const launchScreen = '/launch-screen';
-  static const onBoardScreens = '/on-boarding-screens';
-  static const loginScreen = '/login-screen';
-  static const forgotPasswordScreen = '/forgot-password-screen';
-  static const setNewPasswordScreen = '/set-new-password-screen';
-  static const signUpScreen = '/signUp-screen';
+  static const launchScreen = Strings.launchScreen;
+  static const onBoardScreens = Strings.onBoardScreens;
+  static const loginScreen = Strings.loginScreen;
+  static const forgotPasswordScreen = Strings.forgotPasswordScreen;
+  static const setNewPasswordScreen = Strings.setNewPasswordScreen;
+  static const signUpScreen = Strings.signUpScreen;
+  static const fingerPrintScreen = Strings.fingerPrintScreen;
+  static const setupScreen = Strings.setupScreen;
 }

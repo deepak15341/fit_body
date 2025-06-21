@@ -1,3 +1,4 @@
+import 'package:fitbody/app/utils/image_paths.dart';
 import 'package:fitbody/app/utils/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -13,90 +14,98 @@ class OnBoardingScreensView extends GetView<OnBoardingScreensController> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: PageView.builder(
-        controller: controller.pageController,
-        onPageChanged: controller.onPageChanged,
-        itemCount: controller.bgImage.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(controller.bgImage[index]),
-                filterQuality: FilterQuality.high,
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: SafeArea(
-              child: Stack(
-                children: [
-                  ListView(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        margin: EdgeInsets.only(
-                          left: 14,
-                          right: 14,
-                          top: index == 0 ? height * 0.28 : height * 0.32,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(18),
-                          color: index == 0 ? null : AppColors.purple,
-                        ),
-                        child:
-                            index == 0
-                                ? fragment1(context, height)
-                                : fragment2(context, index, height, width),
+    return Obx(
+      () {
+        return Scaffold(
+          body: Stack(
+            children: [
+              PageView.builder(
+                controller: controller.pageController,
+                onPageChanged: controller.onPageChanged,
+                itemCount: controller.bgImage.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: height,
+                    width: width,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(controller.bgImage[index]),
+                        filterQuality: FilterQuality.high,
+                        fit: BoxFit.cover,
                       ),
-                      SizedBox(height: height * 0.02),
-                      if (index != 0)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 100.0,
+                    ),
+                  );
+                },
+              ),
+              SafeArea(
+                child: Stack(
+                  children: [
+                    Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(20),
+                          margin: EdgeInsets.only(
+                            left: 14,
+                            right: 14,
+                            top: controller.index.value == 0 ? height * 0.28 : height * 0.32,
                           ),
-                          child: CustomButton(
-                            text:
-                                index == 1 || index == 2
-                                    ? Strings.next
-                                    : Strings.getStarted,
-                            buttonTextSize: 16,
-                            fw: FontWeight.w700,
-                            onTap: () {
-                              controller.onNextTap();
-                            },
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: controller.index.value == 0 ? null : AppColors.purple,
                           ),
+                          child:
+                          controller.index.value == 0
+                              ? fragment1(context, height)
+                              : fragment2(context, controller.index.value, height, width),
                         ),
-                    ],
-                  ),
-                  if (index > 0 && index < controller.bgImage.length - 1)
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: TextButton(
-                          onPressed: () {
-                            controller.onTapSkip();
-                          },
-                          child: Text(
-                            Strings.skip,
-                            style: TextWidgets.textStyle(
-                              fontColor: AppColors.yellow,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 22,
+                        SizedBox(height: height * 0.02),
+                        if (controller.index.value != 0)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 100.0,
+                            ),
+                            child: CustomButton(
+                              text:
+                              controller.index.value == 1 || controller.index.value == 2
+                                  ? Strings.next
+                                  : Strings.getStarted,
+                              buttonTextSize: 16,
+                              fw: FontWeight.w700,
+                              onTap: () {
+                                controller.onNextTap();
+                              },
+                            ),
+                          ),
+                      ],
+                    ),
+                    if (controller.index.value < controller.bgImage.length - 1)
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: TextButton(
+                            onPressed: () {
+                              controller.onTapSkip();
+                            },
+                            child: Text(
+                              Strings.skip,
+                              style: TextWidgets.textStyle(
+                                fontColor: AppColors.yellow,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 22,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -106,7 +115,7 @@ class OnBoardingScreensView extends GetView<OnBoardingScreensController> {
       runAlignment: WrapAlignment.center,
       children: [
         Text(
-          "${Strings.welcome} ${Strings.to}",
+          '${Strings.welcome} ${Strings.to}',
           textAlign: TextAlign.center,
           style: TextWidgets.textStyle(
             fontColor: AppColors.yellow,
@@ -117,7 +126,7 @@ class OnBoardingScreensView extends GetView<OnBoardingScreensController> {
         ),
         Center(
           child: Image.asset(
-            'assets/images/app_logo.png',
+            IP.appLogo,
             filterQuality: FilterQuality.high,
             scale: 2.8,
           ),

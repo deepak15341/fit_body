@@ -37,6 +37,7 @@ dependencies:
   get:
   google_fonts:
   animated_text_kit:
+  local_auth:
 
 dev_dependencies:
   flutter_test:
