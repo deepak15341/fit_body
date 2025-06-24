@@ -5,6 +5,8 @@ import '../modules/authentication_screens/views/fingerprint_view.dart';
 import '../modules/authentication_screens/views/forgotpassword_view.dart';
 import '../modules/authentication_screens/views/login_view.dart';
 import '../modules/authentication_screens/views/signup_view.dart';
+import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/launch_screen/views/launch_screen_view.dart';
 import '../modules/on_boarding_screens/bindings/on_boarding_screens_binding.dart';
 import '../modules/on_boarding_screens/views/on_boarding_screens_view.dart';
@@ -48,6 +50,11 @@ class AppPages {
       name: _Paths.setupScreen,
       page: () => const SetupScreenView(),
       binding: SetupScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.dashboard,
+      page: () => const DashboardView(),
+      binding: DashboardBinding(),
     ),
   ];
 }

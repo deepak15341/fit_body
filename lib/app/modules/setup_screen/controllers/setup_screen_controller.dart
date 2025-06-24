@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../utils/strings.dart';
 import '../../../utils/widgets/snack_bar/snack_message.dart';
 import '../views/setup_screen_view.dart';
@@ -39,6 +40,7 @@ class SetupScreenController extends GetxController {
       fragmentIndex.value++;
     } else {
       if (setUpValidateKey.currentState!.validate() && context.mounted) {
+        Get.offNamedUntil(Routes.dashboard, (route) => false,);
       } else {
         showSnack(
           context: context,

@@ -70,6 +70,7 @@ class Strings {
   static const setNewPasswordScreen = '/set-new-password-screen';
   static const signUpScreen = '/signUp-screen';
   static const fingerPrintScreen = '/fingerPrint-screen';
+  static const dashboardScreen = '/dashboard';
   static const fingerPrintDescription =
       'Touch the fingerprint sensor to proceed....';
   static const ok = 'OK';
@@ -112,4 +113,8 @@ class Strings {
   static const  nickName = 'Nick Name';
   static const  email = 'Email';
   static const  mobile = 'Mobile';
+  static const  dashboard = 'Dashboard';
+  static const  hi = 'Hi! ';
+  static const  deepak = 'Deepak';
+  static const  challengeLimits = 'It\'s time to challenge your limits.';
 }
