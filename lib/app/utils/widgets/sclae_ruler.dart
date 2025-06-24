@@ -124,9 +124,7 @@ class SimpleRulerPickerState extends State<SimpleRulerPicker> {
     final jumpValue = jumpIndex + widget.minValue;
     final newValue = jumpValue.clamp(widget.minValue, widget.maxValue);
     if (newValue != _selectedValue) {
-      setState(() {
         _selectedValue = newValue.toInt();
-      });
       widget.onValueChanged?.call(_selectedValue);
     }
   }

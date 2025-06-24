@@ -203,7 +203,6 @@ class AgePickerState extends State<AgePicker> {
                 valueMap[i]["hasBorders"] = false;
               }
             }
-            setState(() {});
           },
           children:
               valueMap.map((Map curValue) {
