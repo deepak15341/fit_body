@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/strings.dart';
+import '../../../utils/widgets/snack_bar/snack_message.dart';
 import '../views/setup_screen_view.dart';
 
 class SetupScreenController extends GetxController {
@@ -33,9 +34,17 @@ class SetupScreenController extends GetxController {
     Fragment7(),
     Fragment8(),
   ];
-  void onTapNext() {
+  void onTapNext(BuildContext context) {
     if (fragmentIndex.value != fragmentPages.length - 1) {
       fragmentIndex.value++;
+    } else {
+      if (setUpValidateKey.currentState!.validate() && context.mounted) {
+      } else {
+        showSnack(
+          context: context,
+          messageType: MessageType.info(Strings.checkMandatory),
+        );
+      }
     }
   }
 
@@ -54,4 +63,9 @@ class SetupScreenController extends GetxController {
 
   Rx<String> selectedGoal = Strings.empty.obs;
   Rx<String> selectedActivityGoal = Strings.empty.obs;
+  TextEditingController setUpFullNameController = TextEditingController();
+  TextEditingController setUpNickNameController = TextEditingController();
+  TextEditingController setUpEmailController = TextEditingController();
+  TextEditingController setUpMobileController = TextEditingController();
+  GlobalKey<FormState> setUpValidateKey = GlobalKey();
 }

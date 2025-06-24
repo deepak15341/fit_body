@@ -1,8 +1,10 @@
 import 'package:fitbody/app/utils/color_constants.dart';
 import 'package:fitbody/app/utils/image_paths.dart';
 import 'package:fitbody/app/utils/strings.dart';
+import 'package:fitbody/app/utils/widgets/app_text_field.dart';
 import 'package:fitbody/app/utils/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 
@@ -37,9 +39,10 @@ class SetupScreenView extends GetView<SetupScreenController> {
               child: controller.fragmentPages[controller.fragmentIndex.value],
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: width * 0.25,
-                vertical: height * 0.04,
+              padding: EdgeInsets.only(
+                left: width * 0.25,
+                right: width * 0.25,
+                bottom: height * 0.04,
               ),
               child: CustomButton(
                 text:
@@ -53,7 +56,7 @@ class SetupScreenView extends GetView<SetupScreenController> {
                 buttonTextSize: 18,
                 fw: FontWeight.w600,
                 onTap: () {
-                  controller.onTapNext();
+                  controller.onTapNext(context);
                 },
               ),
             ),
@@ -798,7 +801,7 @@ class Fragment8 extends GetView<SetupScreenController> {
     var height = MediaQuery.of(context).size.height;
     return ListView(
       children: [
-        SizedBox(height: height * 0.04),
+        SizedBox(height: height * 0.02),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
@@ -811,7 +814,7 @@ class Fragment8 extends GetView<SetupScreenController> {
             ),
           ),
         ),
-        SizedBox(height: height * 0.05),
+        SizedBox(height: height * 0.02),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
@@ -824,20 +827,105 @@ class Fragment8 extends GetView<SetupScreenController> {
             ),
           ),
         ),
-        SizedBox(height: height * 0.08),
-        Obx(() {
-          return Container(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            decoration: BoxDecoration(
-              color: AppColors.purple,
-              borderRadius: BorderRadius.circular(25),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [CircleAvatar()],
-            ),
-          );
-        }),
+        SizedBox(height: height * 0.04),
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 16, horizontal: 22),
+          decoration: BoxDecoration(
+            color: AppColors.purple,
+            borderRadius: BorderRadius.circular(25),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadiusGeometry.circular(150),
+                    child: Image.asset(
+                      IP.onBoard2,
+                      height: 120,
+                      width: 120,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    right: 1,
+                    bottom: 1,
+                    child: CircleAvatar(
+                      radius: 15,
+                      backgroundColor: AppColors.yellow,
+                      child: Icon(
+                        Icons.edit_outlined,
+                        size: 22,
+                        color: AppColors.black,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Form(
+                key: controller.setUpValidateKey,
+                child: Column(
+                  children: [
+                    SizedBox(height: height * 0.02),
+                    AppTextField(
+                      controller: controller.setUpFullNameController,
+                      title: Strings.fullName,
+                      titleFontSize: 16,
+                      boxColor: AppColors.white,
+                      borderColor: AppColors.white,
+                      borderRadius: 18,
+                      mandatory: true,
+                      textColor: AppColors.black,
+                      addPadding: true,
+                      validator: Validator.notEmpty,
+                    ),
+                    SizedBox(height: height * 0.01),
+                    AppTextField(
+                      controller: controller.setUpNickNameController,
+                      title: Strings.nickName,
+                      titleFontSize: 16,
+                      boxColor: AppColors.white,
+                      borderColor: AppColors.white,
+                      borderRadius: 18,
+                      mandatory: true,
+                      textColor: AppColors.black,
+                      addPadding: true,
+                      validator: Validator.notEmpty,
+                    ),
+                    SizedBox(height: height * 0.01),
+                    AppTextField(
+                      controller: controller.setUpEmailController,
+                      title: Strings.email,
+                      titleFontSize: 16,
+                      boxColor: AppColors.white,
+                      borderColor: AppColors.white,
+                      borderRadius: 18,
+                      mandatory: true,
+                      textColor: AppColors.black,
+                      addPadding: true,
+                      validator: Validator.email,
+                    ),
+                    SizedBox(height: height * 0.01),
+                    AppTextField(
+                      controller: controller.setUpMobileController,
+                      title: Strings.mobile,
+                      titleFontSize: 16,inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      keyboardType: TextInputType.phone,
+                      boxColor: AppColors.white,
+                      borderColor: AppColors.white,
+                      borderRadius: 18,
+                      mandatory: true,
+                      textColor: AppColors.black,
+                      addPadding: true,
+                      validator: Validator.phone,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

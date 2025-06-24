@@ -109,4 +109,7 @@ class Strings {
   static const  activityList = ['Beginner','Intermediate','Advance'];
   static const  fillProfile = 'Fill Your Profile';
   static const  fillProfileDescription = 'Complete your profile to receive personalized insights and a tailored fitness journey.';
+  static const  nickName = 'Nick Name';
+  static const  email = 'Email';
+  static const  mobile = 'Mobile';
 }
