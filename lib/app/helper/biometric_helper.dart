@@ -1,3 +1,4 @@
+import 'package:fitbody/app/utils/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:local_auth/local_auth.dart';
 // import 'package:local_auth_android/local_auth_android.dart';
@@ -35,7 +36,7 @@ class BiometricHelper {
       );
       return didAuthenticate;
     } catch (e) {
-      debugPrint("Biometric error: $e");
+      debugPrint("${Strings.biometricFailed} : $e");
       return false;
     }
   }

@@ -115,7 +115,7 @@ class AuthenticationScreensController extends GetxController {
 
   void onSignUpTapped({required BuildContext context}) {
     if (signUpValidateKey.currentState!.validate()) {
-      Get.toNamed(Routes.setupScreen);
+      Get.offAndToNamed(Routes.setupScreen);
     } else {
       showSnack(
         context: context,
@@ -125,13 +125,18 @@ class AuthenticationScreensController extends GetxController {
   }
 
 
-  void fingerPrintTap()async{
+  void fingerPrintTap(BuildContext context)async{
     final biometricHelper = BiometricHelper();
       bool success = await biometricHelper.authenticateWithBiometrics();
       if (success) {
-        debugPrint("Biometric Auth Success");
+        debugPrint(Strings.biometricSuccess);
       } else {
-        debugPrint("Biometric Auth Failed");
+       if(context.mounted){
+         showSnack(
+           context: context,
+           messageType: MessageType.info(Strings.biometricFailed),
+         );
+       }
       }
 
     // Get.toNamed(Routes.fingerPrintScreen);

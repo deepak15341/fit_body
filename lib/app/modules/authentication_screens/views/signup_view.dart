@@ -208,7 +208,7 @@ class SignUpScreenView extends GetView<AuthenticationScreensController> {
       return InkWell(
         onTap: () {
           if (index == 2) {
-            controller.fingerPrintTap();
+            controller.fingerPrintTap(context);
           }
         },
         splashColor: AppColors.transparent,

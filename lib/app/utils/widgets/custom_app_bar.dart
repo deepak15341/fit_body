@@ -8,7 +8,9 @@ AppBar customAppBar({
   required String title,
   Color? titleColor,
   List<Widget>? actions,
+  Function? onBackPressed,
   bool showBack = true,
+  bool centreTitle = true
 }) {
   return AppBar(
     iconTheme: IconThemeData(color: titleColor ?? AppColors.yellow),
@@ -21,7 +23,10 @@ AppBar customAppBar({
               ), // Use custom or default back icon
               color: titleColor ?? AppColors.yellow,
               onPressed: () {
-                if (Get.key.currentState!.canPop()) {
+                if(onBackPressed!=null){
+                  onBackPressed();
+                }
+                else if (Get.key.currentState!.canPop()) {
                   Get.back();
                 }
               },
@@ -36,7 +41,7 @@ AppBar customAppBar({
         fontWeight: FontWeight.w500,
       ),
     ),
-    centerTitle: true,
+    centerTitle: centreTitle,
     actions: actions,
   );
 }

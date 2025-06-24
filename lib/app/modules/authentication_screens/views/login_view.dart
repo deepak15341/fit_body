@@ -118,7 +118,7 @@ class LoginView
     return List.generate(3, (index) {
       return InkWell(onTap: () {
         if(index==2){
-          controller.fingerPrintTap();
+          controller.fingerPrintTap(context);
         }
       },splashColor: AppColors.transparent,highlightColor: AppColors.transparent,
         child: Container(

@@ -1,9 +1,10 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/strings.dart';
+import '../views/setup_screen_view.dart';
 
 class SetupScreenController extends GetxController {
   @override
@@ -21,6 +22,36 @@ class SetupScreenController extends GetxController {
     )];
   }
 
-Rx<int> fragmentIndex = 0.obs;
-  void onTapNext() {}
+  Rx<int> fragmentIndex = 0.obs;
+  List<Widget> fragmentPages = [
+    Fragment1(),
+    Fragment2(),
+    Fragment3(),
+    Fragment4(),
+    Fragment5(),
+    Fragment6(),
+    Fragment7(),
+    Fragment8(),
+  ];
+  void onTapNext() {
+    if (fragmentIndex.value != fragmentPages.length - 1) {
+      fragmentIndex.value++;
+    }
+  }
+
+  void onBackPressed() {
+    if (fragmentIndex.value != 0) {
+      fragmentIndex.value--;
+    }
+  }
+
+  Rx<int?> selectedGender = Rxn();
+  Rx<int> selectedAge = 16.obs;
+  Rx<int> selectedWeight = 16.obs;
+  Rx<int> selectedHeight = 50.obs;
+  List<IconData> icon = [Icons.male, Icons.female];
+  Rx<String> selectedWeightStandard = Strings.lb.obs;
+
+  Rx<String> selectedGoal = Strings.empty.obs;
+  Rx<String> selectedActivityGoal = Strings.empty.obs;
 }

@@ -71,7 +71,7 @@ class Strings {
   static const signUpScreen = '/signUp-screen';
   static const fingerPrintScreen = '/fingerPrint-screen';
   static const fingerPrintDescription =
-      "Touch the fingerprint sensor to proceed....";
+      'Touch the fingerprint sensor to proceed....';
   static const ok = 'OK';
   static const toManyAttempts = 'Too many attempts';
   static const authErrorMessage =
@@ -86,4 +86,27 @@ class Strings {
     'To keep your account secure and personalized, please complete the setup process.',
   ];
   static const back = 'Back';
+  static const whatsYourGender = 'What\'s Your Gender?';
+  static const selectGender = 'Please select your gender from the options below to help us personalize your experience.';
+  static const start = 'Start';
+  static const List<String> genderList = ['Male','Female'];
+  static const  ageQuestion = 'How old are you?';
+  static const  weightQuestion = 'What Is Your Weight?';
+  static const  heightQuestion = 'What Is Your height?';
+  static const  selectAgeDesc = 'Please select your age from the options below so we can provide age-appropriate recommendations and content.';
+  static const  selectWeightDesc = 'Please use the scale below to select your current weight in kilograms. This information helps us personalize your experience and provide more accurate health insights tailored to your needs.';
+  static const  selectHeightDesc = 'Adjust the scale height to control how prominently the weight selector appears, ensuring a smooth and accessible user experience.';
+  static const  kg = 'KG';
+  static const  lb = 'LB';
+  static const  cm = 'CM';
+  static const  biometricSuccess = 'Biometric Authentication Success';
+  static const  biometricFailed = 'Biometric Authentication Failed';
+  static const  goalQuestion = 'What Is Your Goal?';
+  static const  activityQuestion = 'Physical Activity Level';
+  static const  goalDescription = 'Please select your primary fitness goal to help us tailor your workout and nutrition plans effectively.';
+  static const  activityDescription = 'Select your typical physical activity level to help us provide more accurate fitness and nutrition recommendations.';
+  static const  goalList = ['Lose Weight','Gain Weight','Muscle Mass Gain','Shape Body','Others'];
+  static const  activityList = ['Beginner','Intermediate','Advance'];
+  static const  fillProfile = 'Fill Your Profile';
+  static const  fillProfileDescription = 'Complete your profile to receive personalized insights and a tailored fitness journey.';
 }
