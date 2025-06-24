@@ -284,8 +284,8 @@ class Fragment3 extends GetView<SetupScreenController> {
                       divisions: 104,
                       maxValue: 120,
                       minValue: 16,
-                      textSize: 60,
-                      barSize: 25,
+                      textSize: 32,
+                      barHeight: 25,
                     ),
                   ),
                   IgnorePointer(
@@ -429,8 +429,8 @@ class Fragment4 extends GetView<SetupScreenController> {
                       divisions: 400 - 16,
                       maxValue: 400,
                       minValue: 16,
-                      textSize: 60,
-                      barSize: 25,
+                      textSize: 32,
+                      barHeight: 25,
                     ),
                   ),
                   IgnorePointer(

@@ -51,12 +51,10 @@ class ItemWidgetState extends State<ItemWidget> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "|",
-                style: TextStyle(
-                  fontSize: widget.barSize ?? 8,
-                  color: widget.curItem["color"],
-                ),
+              Container(
+                width: 4,
+                height: widget.barSize,
+                color: widget.curItem["color"],
               ),
               const SizedBox(height: 5),
               RichText(
@@ -97,14 +95,6 @@ class ItemWidgetState extends State<ItemWidget> {
                   ],
                 ),
               ),
-              const SizedBox(height: 5),
-              Text(
-                "|",
-                style: TextStyle(
-                  fontSize: widget.barSize ?? 8,
-                  color: widget.curItem["color"],
-                ),
-              ),
             ],
           ),
         ),
@@ -125,7 +115,7 @@ class AgePicker extends StatefulWidget {
   final Color passiveItemsTextColor;
   final String suffix;
   final double? textSize;
-  final double? barSize;
+  final double? barHeight;
   final int initialValue;
 
   const AgePicker({
@@ -141,7 +131,7 @@ class AgePicker extends StatefulWidget {
     this.activeItemTextColor = Colors.blue,
     this.passiveItemsTextColor = Colors.grey,
     this.suffix = "",
-    this.barSize,
+    this.barHeight,
     this.textSize,
     required this.initialValue,
   }) : assert(minValue < maxValue);
@@ -223,7 +213,7 @@ class AgePickerState extends State<AgePicker> {
                     curValue,
                     widget.backgroundColor,
                     widget.suffix,
-                    barSize: widget.barSize,
+                    barSize: widget.barHeight,
                   ),
                 );
               }).toList(),
