@@ -12,5 +12,15 @@ class IP{
   static const onBoardIcon3 = 'assets/images/on_board_icon3.png';
   static const fingerPrintImage = 'assets/images/fingerPrint.png';
   static const setupBackground1 = 'assets/images/setupBackground1.png';
+  static const dumbbell = 'assets/images/dumbbell.png';
+  static const progressTracking = 'assets/images/progress_tracking.png';
+  static const nutrition = 'assets/images/nutrition.png';
+  static const community = 'assets/images/community.png';
+  static const dashboardCard1 = 'assets/images/dashboardCard1.png';
+  static const dashboardCard2 = 'assets/images/dashboardCard2.png';
+  static const play = 'assets/images/play.png';
+  static const weeklyChallenge = 'assets/images/weeklyChallenge.png';
+  static const article1 = 'assets/images/article1.png';
+  static const article2 = 'assets/images/article2.png';
 
 }

@@ -19,7 +19,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  // static const INITIAL = Routes.LAUNCH_SCREEN;
+  static final initial = _Paths.launchScreen;
 
   static final routes = [
     GetPage(name: _Paths.launchScreen, page: () => LaunchScreenView()),

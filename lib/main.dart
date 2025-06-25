@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       defaultTransition: Transition.downToUp,
-      initialRoute: Routes.launchScreen,
+      initialRoute: AppPages.initial,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
       theme: ThemeData.light(), // Light theme

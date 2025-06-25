@@ -7,12 +7,15 @@ import '../color_constants.dart';
 AppBar customAppBar({
   required String title,
   Color? titleColor,
+  double? titleSize,
   List<Widget>? actions,
   Function? onBackPressed,
   bool showBack = true,
-  bool centreTitle = true
+  bool centreTitle = true,
+  double? titleSpacing,
+ double? actionPadding
 }) {
-  return AppBar(
+  return AppBar(titleSpacing: titleSpacing,actionsPadding: EdgeInsets.only(right: actionPadding ?? 0),
     iconTheme: IconThemeData(color: titleColor ?? AppColors.yellow),
     leading:
         showBack
@@ -37,7 +40,7 @@ AppBar customAppBar({
       textAlign: TextAlign.center,
       style: TextWidgets.textStyle(
         fontColor: titleColor ?? AppColors.yellow,
-        fontSize: 16,
+        fontSize: titleSize ?? 16,
         fontWeight: FontWeight.w500,
       ),
     ),

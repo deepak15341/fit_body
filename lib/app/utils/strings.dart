@@ -100,8 +100,8 @@ class Strings {
   static const  kg = 'KG';
   static const  lb = 'LB';
   static const  cm = 'CM';
-  static const  biometricSuccess = 'Biometric Authentication Success';
-  static const  biometricFailed = 'Biometric Authentication Failed';
+  static const  biometricSuccess = 'Biometric Authentication Success !!';
+  static const  biometricFailed = 'Biometric Authentication Failed !!';
   static const  goalQuestion = 'What Is Your Goal?';
   static const  activityQuestion = 'Physical Activity Level';
   static const  goalDescription = 'Please select your primary fitness goal to help us tailor your workout and nutrition plans effectively.';
@@ -117,4 +117,14 @@ class Strings {
   static const  hi = 'Hi! ';
   static const  deepak = 'Deepak';
   static const  challengeLimits = 'It\'s time to challenge your limits.';
+  static const  workout = 'Workout';
+  static const  recommendation = 'Recommendation';
+  static const  dashboardTopIconStrings = ['Workout','Progress Tracking','Nutrition','Community'];
+  static const  seeAll = 'See All';
+  static const  dashboardCardStrings = ['Squat Exercise','Full Body stretching'];
+  static const  dashboardCardInnerStrings = [['12 Minutes','120 Kcal'],['12 Minutes','120 Kcal']];
+  static const  weekChallenge = 'Weekly Challenge';
+  static const  plankTwist = 'Plank With Hip Twist';
+  static const  articleTips = 'Articles & Tips';
+  static const  articleStringList = ['Supplement Guide...','15 Quick & Effective Daily Routines...'];
 }
