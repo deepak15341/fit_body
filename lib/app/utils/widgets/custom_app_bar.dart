@@ -7,15 +7,20 @@ import '../color_constants.dart';
 AppBar customAppBar({
   required String title,
   Color? titleColor,
+  Color? backButtonColor,
   double? titleSize,
   List<Widget>? actions,
   Function? onBackPressed,
   bool showBack = true,
   bool centreTitle = true,
   double? titleSpacing,
- double? actionPadding
+  double? actionPadding,
+  Color? backgroundColor,
 }) {
-  return AppBar(titleSpacing: titleSpacing,actionsPadding: EdgeInsets.only(right: actionPadding ?? 0),
+  return AppBar(
+    titleSpacing: titleSpacing,
+    backgroundColor: backgroundColor,
+    actionsPadding: EdgeInsets.only(right: actionPadding ?? 0),
     iconTheme: IconThemeData(color: titleColor ?? AppColors.yellow),
     leading:
         showBack
@@ -24,12 +29,11 @@ AppBar customAppBar({
                 Icons.arrow_left,
                 size: 32,
               ), // Use custom or default back icon
-              color: titleColor ?? AppColors.yellow,
+              color: backButtonColor ?? AppColors.yellow,
               onPressed: () {
-                if(onBackPressed!=null){
+                if (onBackPressed != null) {
                   onBackPressed();
-                }
-                else if (Get.key.currentState!.canPop()) {
+                } else if (Get.key.currentState!.canPop()) {
                   Get.back();
                 }
               },

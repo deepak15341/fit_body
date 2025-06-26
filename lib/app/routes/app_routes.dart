@@ -11,7 +11,9 @@ abstract class Routes {
   static const signUpScreen = _Paths.signUpScreen;
   static const fingerPrintScreen = _Paths.fingerPrintScreen;
   static const setupScreen = _Paths.setupScreen;
-  static const dashboard = _Paths.dashboard;
+  static const dashboardScreen = _Paths.dashboardScreen;
+  static const customNavBarScreen = _Paths.customNavBarScreen;
+  static const profileScreen = _Paths.profileScreen;
 }
 
 abstract class _Paths {
@@ -24,5 +26,7 @@ abstract class _Paths {
   static const signUpScreen = Strings.signUpScreen;
   static const fingerPrintScreen = Strings.fingerPrintScreen;
   static const setupScreen = Strings.setupScreen;
-  static const dashboard = Strings.dashboardScreen;
+  static const dashboardScreen = Strings.dashboardScreen;
+  static const customNavBarScreen = Strings.customNavBarScreen;
+  static const profileScreen = Strings.profileScreen;
 }

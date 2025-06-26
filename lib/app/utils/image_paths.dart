@@ -22,5 +22,10 @@ class IP{
   static const weeklyChallenge = 'assets/images/weeklyChallenge.png';
   static const article1 = 'assets/images/article1.png';
   static const article2 = 'assets/images/article2.png';
+  static const navbar1 = 'assets/images/navbar1.png';
+  static const navbar2 = 'assets/images/navbar2.png';
+  static const navbar3 = 'assets/images/navbar3.png';
+  static const navbar4 = 'assets/images/navbar4.png';
+  static const deepakImg = 'assets/images/deepakImg.jpeg';
 
 }

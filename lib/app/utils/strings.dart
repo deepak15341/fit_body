@@ -71,6 +71,8 @@ class Strings {
   static const signUpScreen = '/signUp-screen';
   static const fingerPrintScreen = '/fingerPrint-screen';
   static const dashboardScreen = '/dashboard';
+  static const customNavBarScreen = '/custom-navbar';
+  static const profileScreen = '/profile';
   static const fingerPrintDescription =
       'Touch the fingerprint sensor to proceed....';
   static const ok = 'OK';
@@ -116,6 +118,9 @@ class Strings {
   static const  dashboard = 'Dashboard';
   static const  hi = 'Hi! ';
   static const  deepak = 'Deepak';
+  static const  deepakKr = 'Deepak Kumar';
+  static const  deepakEmail = 'deepakkumarsahbgp123@gmail.com';
+  static const  deepakDOB = '23rd December 1998';
   static const  challengeLimits = 'It\'s time to challenge your limits.';
   static const  workout = 'Workout';
   static const  recommendation = 'Recommendation';
@@ -127,4 +132,7 @@ class Strings {
   static const  plankTwist = 'Plank With Hip Twist';
   static const  articleTips = 'Articles & Tips';
   static const  articleStringList = ['Supplement Guide...','15 Quick & Effective Daily Routines...'];
+  static const  profile = 'My Profile';
+  static const profileRowTexts = ['70 Kg', '26','173 CM'];
+  static const profileRowTexts1 = ['Weight','age','height'];
 }

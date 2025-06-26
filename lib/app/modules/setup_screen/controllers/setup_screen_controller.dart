@@ -40,7 +40,7 @@ class SetupScreenController extends GetxController {
       fragmentIndex.value++;
     } else {
       if (setUpValidateKey.currentState!.validate() && context.mounted) {
-        Get.offNamedUntil(Routes.dashboard, (route) => false,);
+        Get.offNamedUntil(Routes.customNavBarScreen, (route) => false,);
       } else {
         showSnack(
           context: context,

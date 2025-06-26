@@ -129,7 +129,7 @@ class AuthenticationScreensController extends GetxController {
     final biometricHelper = BiometricHelper();
       bool success = await biometricHelper.authenticateWithBiometrics();
       if (success) {
-        Get.offNamedUntil(Routes.dashboard, (route) => false,);
+        Get.offNamedUntil(Routes.customNavBarScreen, (route) => false,);
       } else {
        if(context.mounted){
          showSnack(

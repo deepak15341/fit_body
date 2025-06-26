@@ -12,7 +12,9 @@ import '../../../utils/widgets/text_widgets.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardView extends GetView<DashboardController> {
-  const DashboardView({super.key});
+  DashboardView({super.key});
+  @override
+  final controller = Get.put(DashboardController());
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -27,13 +29,17 @@ class DashboardView extends GetView<DashboardController> {
         actionPadding: 30,
         showBack: false,
         actions: List.generate(controller.appBarIcons.length, (index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Icon(controller.appBarIcons[index], color: AppColors.purple),
+          return InkWell(highlightColor: AppColors.transparent,splashColor: AppColors.transparent,onTap: () {
+            controller.onDashboardIconTap(index,context);
+          },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Icon(controller.appBarIcons[index], color: AppColors.purple),
+            ),
           );
         }),
       ),
-      
+
       body: SafeArea(
         child: Column(
           children: [
@@ -177,6 +183,7 @@ class DashboardView extends GetView<DashboardController> {
                     ),
                   ),
                   articleRow(width, height),
+                  SizedBox(height: height * 0.02),
                 ],
               ),
             ),
